@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BC Transit App with Realtime Delays</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  </head>
+
+<body>
+    <button id="theme-toggle">🌙 Toggle Theme</button>
+
+  <h1>BC Transit - Departure Times (with Real-time Updates)</h1>
+
+  <label for="route">Select a Route:</label>
+  <select id="route" disabled>
+    <!-- FIX: Added a loading message -->
+    <option value="" disabled selected>Loading routes...</option>
+  </select>
+
+  <label for="stop">Select a Stop:</label>
+  <select id="stop" disabled>
+    <option value="" disabled selected>Choose stop</option>
+  </select>
+
+  <h2>Next Departures:</h2>
+  <div class="departures-container">
+    <ul id="departures">
+      <!-- Departures will be loaded here by app.js -->
+    </ul>
+  </div>
+  
+  <!-- UNDO: Reverted to the dropdown layout -->
+  <h2>Service Alerts:</h2>
+  <label for="alerts-select" class="sr-only">Service Alerts:</label>
+  <select id="alerts-select" disabled>
+    <option value="">Loading alerts...</option>
+  </select>
+  <div id="alert-description" class="alert-box"></div>
+  <!-- END UNDO -->
+
+  <div id="map"></div>
+  
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- protobufjs CDN -->
+  <script src="https://unpkg.com/protobufjs/dist/protobuf.min.js"></script>
+  <!-- Your app script -->
+  <script src="app.js"></script>
+
+  <!-- Theme toggle script -->
+  <script>
+    const toggleButton = document.getElementById("theme-toggle");
+
+    // Load saved theme or default to light
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.body.classList.add(savedTheme);
+    if (savedTheme === 'dark') {
+      toggleButton.textContent = '☀️ Toggle Theme';
+    } else {
+      toggleButton.textContent = '🌙 Toggle Theme';
+    }
+
+    // Toggle and save theme
+    toggleButton.addEventListener("click", () => {
+      const isDark = document.body.classList.contains("dark");
+      document.body.classList.toggle("dark", !isDark);
+      document.body.classList.toggle("light", isDark);
+      localStorage.setItem("theme", isDark ? "light" : "dark");
+
+      // Update button text
+      if (isDark) {
+        toggleButton.textContent = '🌙 Toggle Theme';
+      } else {
+        toggleButton.textContent = '☀️ Toggle Theme';
+      }
+    });
+  </script>
+</body>
+</html>
