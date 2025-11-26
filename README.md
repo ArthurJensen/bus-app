@@ -33,6 +33,10 @@ In order to copy the project onto your machine, open you preferred command line 
 ```bash 
 git clone https://github.com/ArthurJensen/bus-app
 ```
+Create a folder called data inside of the cloned respository.
+
+Extract the data.zip file that we downloaded earlier, and paste the contents into the newely created data folder.
+
 
 ---
 
