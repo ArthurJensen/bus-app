@@ -4,8 +4,6 @@ A simple, self-contained web application that tracks **real-time bus locations**
 
 It uses data from the [BC Transit Open Data Portal](https://bctransit.com/open-data) and animates bus positions smoothly on a **Leaflet** map.
 
-> *(Feel free to take a screenshot of your app and replace the link above!)*
-
 ---
 
 ## ✨ Features
@@ -19,32 +17,32 @@ It uses data from the [BC Transit Open Data Portal](https://bctransit.com/open-d
 
 ---
 
-## 🧠 How to Run This Project
+## 1️⃣ Retriving Bus Data
 
-This project’s **code is complete**, but the **130 MB+ of static transit data** is **not included** in the repository (it’s too large for GitHub).  
-You’ll need to add the data folder manually.
+This project’s **code is complete**, but the **130 MB+ of static transit data** is **not included** when cloning the repository (it’s too large for GitHub).  
 
----
 
-### 1️⃣ Download the Static Data
 
-1. Go to the [BC Transit Open Data Portal](https://bctransit.com/open-data).  
-2. Find the **Victoria** transit system.  
-3. Download the **Static Data** `.zip` file.  
-4. Unzip it — you’ll see many `.txt` files (`routes.txt`, `stops.txt`, etc.).  
-5. **Important:** This app uses `.json` versions of those files. You already have these `.json` files.  
-6. Create a folder named `data` in the **main project directory**.  
-7. Copy your `.json` files (`routes.json`, `stops.json`, `trips.json`, `stop_times.json`, etc.) into this new `data` folder.
+You will be required to add the data folder manually.
+In order to download the data, go to the releases tab and download the `data.zip` file.
 
 ---
 
-### 2️⃣ Set Up the Server
+## 2️⃣ Downloading the required files
+In order to copy the project onto your machine, open you preferred command line and paste this code:
+```bash 
+git clone https://github.com/ArthurJensen/bus-app
+```
 
+---
+
+### 3️⃣ Set Up the Server
 This project uses a small **Python Flask proxy server** to fetch live data (to bypass browser CORS restrictions).
-
-Install the required libraries:
+Before proceeding with setting up the server, make sure that you have flask installed.
 
 ```bash
 pip install Flask requests
-
+```
+Once you have the data and the required files, use python to launch the server.py
+The python script should provide you with a link to view the project such as `http://localhost:8000`
 
