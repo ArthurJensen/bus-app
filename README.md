@@ -47,6 +47,6 @@ Before proceeding with setting up the server, make sure that you have flask inst
 ```bash
 pip install Flask requests
 ```
-Once you have the data and the required files, use python to launch the server.py
+Once you have the data and the required files, use python to launch the server.py.
 The python script should provide you with a link to view the project such as `http://localhost:8000`
 
